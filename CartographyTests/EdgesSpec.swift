@@ -40,6 +40,18 @@ class EdgesSpec: QuickSpec {
             }
         }
 
+        describe("LayoutProxy.edges()") {
+            it("should support specifying specific edges") {
+                constrain(view) { view in
+                    view.edges(.top, .bottom, .left, .right) = view.superview!.edges(.top, .bottom, .left, .right)
+                }
+
+                window.layoutIfNeeded()
+
+                expect(view.frame).to(equal(view.superview?.frame))
+            }
+        }
+
         describe("inset") {
             it("should inset all edges with the same amount") {
                 constrain(view) { view in

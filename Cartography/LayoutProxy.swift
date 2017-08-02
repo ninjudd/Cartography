@@ -58,6 +58,11 @@ public struct LayoutProxy {
         ])
     }
 
+    public func edges(_ attributes: NSLayoutAttribute...) -> Edges {
+      let edges = attributes.map { Edge(context, view, $0) }
+      return Edges(context, edges)
+    }
+
     /// The leading edge of the view.
     public var leading: Edge {
         return Edge(context, view, .leading)
