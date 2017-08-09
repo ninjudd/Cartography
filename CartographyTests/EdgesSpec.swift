@@ -82,6 +82,16 @@ class EdgesSpec: QuickSpec {
 
                 expect(view.frame).to(equal(CGRect(x: 20, y: 10, width: 340, height: 360)))
             }
+
+            it("should inset custom edges") {
+                constrain(view) { view in
+                    view.edges(.left, .top, .right, .bottom) == view.superview!.edges(.left, .top, .right, .bottom).inset(20, 10, -40, -30)
+                }
+
+                window.layoutIfNeeded()
+
+                expect(view.frame).to(equal(CGRect(x: 20, y: 10, width: 340, height: 360)))
+            }
         }
 
 #if os(iOS) || os(tvOS)
