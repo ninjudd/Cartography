@@ -43,6 +43,11 @@ extension LayoutProxy {
     internal func edges(for attr1: Edge, _ attr2: Edge, _ attr3: Edge, _ attr4: Edge) -> Edges {
         return Edges(context, [attr1, attr2, attr3, attr4])
     }
+
+    public func edges(_ attributes: NSLayoutAttribute...) -> Edges {
+        let edges = attributes.map { Edge(context, item, $0) }
+        return Edges(context, edges)
+    }
 }
 
 public protocol SupportsTopLayoutProxy: LayoutProxy {}

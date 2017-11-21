@@ -20,6 +20,10 @@ public struct Edges: Compound, RelativeCompoundEquality, RelativeCompoundInequal
         self.context = context
         self.properties = properties
     }
+
+    public func inset(_ insets: CGFloat...) -> Expression<Edges> {
+        return Expression(self, insets.map { Coefficients(1, $0) })
+    }
 }
 
 /// Insets all edges.
